@@ -1,9 +1,9 @@
+import com.codeforart.DDDEngine.Point;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class PointTest {
-
 
     @Test
     public void shouldCompareTwoPoints() {
@@ -13,7 +13,6 @@ public class PointTest {
 
         assertThat(p1).isEqualTo(p2);
         assertThat(p1).isNotEqualTo(p3);
-
     }
 
     @Test
@@ -31,7 +30,6 @@ public class PointTest {
 
         assertThat(p1.sub(p2)).isEqualTo(new Point(0, 0, 0));
     }
-
 
     @Test
     public void shouldNegate() {

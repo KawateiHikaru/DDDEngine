@@ -1,3 +1,6 @@
+package com.codeforart.DDDEngine;
+
+
 import org.jetbrains.annotations.NotNull;
 
 public class Point {
