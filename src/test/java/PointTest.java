@@ -46,9 +46,9 @@ public class PointTest {
     @Test
     public void shouldGetDistance() {
         Point p1 = new Point(0,0,0);
-        Point p2 = new Point(1,1,1);
+        Point p2 = new Point(1,0,0);
 
-        assertThat(p1.distance(p2)).isEqualTo(new Point(1,1,1));
+        assertThat(p1.distance(p2)).isEqualTo(1);
     }
 
 }

@@ -2,12 +2,16 @@ package com.codeforart.DDDEngine;
 
 
 import org.jetbrains.annotations.NotNull;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 public class Point {
 
     private float x, y, z;
 
     public Point(@NotNull float x, @NotNull float y, @NotNull float z) {
+        checkNotNull(x);
+        checkNotNull(y);
+        checkNotNull(z);
         this.x = x;
         this.y = y;
         this.z = z;
@@ -32,10 +36,12 @@ public class Point {
      * @return
      */
     public Point add(@NotNull Point p1) {
+        checkNotNull(p1);
         return new Point(this.x + p1.x, this.y + p1.y, this.z + p1.z);
     }
 
     public Point negate() {
+
         return new Point(-this.x, -this.y, -this.z);
     }
 
@@ -54,6 +60,7 @@ public class Point {
      * @return
      */
     public Point sub(@NotNull Point p1) {
+        checkNotNull(p1);
         return this.add(p1.negate());
     }
 
@@ -64,18 +71,16 @@ public class Point {
      * @return
      */
     public Point distance(@NotNull Point p1) {
-
+        checkNotNull(p1);
         return null;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof Point)) {
-            return false;
-        }
+        checkNotNull(obj);
+        if (!(obj instanceof Point)) return false;
 
         Point p1 = (Point) obj;
-
         return p1.getX() == this.getX() &&
                 p1.getY() == this.getY() &&
                 p1.getZ() == this.getZ();
