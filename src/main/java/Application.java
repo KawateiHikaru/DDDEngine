@@ -1,6 +1,9 @@
+import com.codeforart.DDDEngine.Shape;
+
 public class Application {
+    public static void main(String[] args) {
+        Shape shapeA = new Shape.Builder().build();
 
-    public void foo() {
-
+        System.out.println(shapeA);
     }
 }

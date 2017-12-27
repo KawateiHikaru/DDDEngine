@@ -2,19 +2,19 @@ package com.codeforart.DDDEngine;
 
 
 import org.jetbrains.annotations.NotNull;
+
 import static com.google.common.base.Preconditions.checkNotNull;
 
 public class Point {
 
-    private float x, y, z;
+    private float x, y;
 
-    public Point(@NotNull float x, @NotNull float y, @NotNull float z) {
+    public Point(@NotNull float x, @NotNull float y) {
         checkNotNull(x);
         checkNotNull(y);
-        checkNotNull(z);
+
         this.x = x;
         this.y = y;
-        this.z = z;
     }
 
     public float getX() {
@@ -25,9 +25,6 @@ public class Point {
         return y;
     }
 
-    public float getZ() {
-        return z;
-    }
 
     /**
      * Added two points together and returns a new point
@@ -37,19 +34,18 @@ public class Point {
      */
     public Point add(@NotNull Point p1) {
         checkNotNull(p1);
-        return new Point(this.x + p1.x, this.y + p1.y, this.z + p1.z);
+        return new Point(this.x + p1.x, this.y + p1.y);
     }
 
     public Point negate() {
 
-        return new Point(-this.x, -this.y, -this.z);
+        return new Point(-this.x, -this.y);
     }
 
     public Point abs() {
         return new Point(
-                this.x < 0 ? -this.x: this.x,
-                this.y < 0 ? -this.y: this.y,
-                this.z < 0 ? -this.z: this.z
+                this.x < 0 ? -this.x : this.x,
+                this.y < 0 ? -this.y : this.y
         );
     }
 
@@ -70,9 +66,13 @@ public class Point {
      * @param p1
      * @return
      */
-    public Point distance(@NotNull Point p1) {
+    public float distance(@NotNull Point p1) {
         checkNotNull(p1);
-        return null;
+
+        return (float) Math.sqrt(
+                Math.pow(p1.x - this.x, 2) +
+                        Math.pow(p1.y - this.y, 2)
+        );
     }
 
     @Override
@@ -82,8 +82,7 @@ public class Point {
 
         Point p1 = (Point) obj;
         return p1.getX() == this.getX() &&
-                p1.getY() == this.getY() &&
-                p1.getZ() == this.getZ();
+                p1.getY() == this.getY();
 
     }
 

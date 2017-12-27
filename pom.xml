@@ -38,30 +38,7 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.lwjgl</groupId>
-            <artifactId>lwjgl</artifactId>
-            <version>${lwjgl.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.lwjgl</groupId>
-            <artifactId>lwjgl-platform</artifactId>
-            <version>${lwjgl.version}</version>
-            <classifier>natives-windows</classifier>
-        </dependency>
-        <dependency>
-            <groupId>org.lwjgl</groupId>
-            <artifactId>lwjgl-platform</artifactId>
-            <version>${lwjgl.version}</version>
-            <classifier>natives-osx</classifier>
-        </dependency>
-        <dependency>
-            <groupId>org.lwjgl</groupId>
-            <artifactId>lwjgl-platform</artifactId>
-            <version>${lwjgl.version}</version>
-            <classifier>natives-linux</classifier>
-        </dependency>
-        <dependency>
+       <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <!-- use 2.8.0 for Java 7 projects -->
