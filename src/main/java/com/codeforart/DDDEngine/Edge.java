@@ -17,14 +17,8 @@ public class Edge {
     }
 
     public double angleBetweenPoints(Point point) {
-
-        double angle = Math.toDegrees(Math.atan2(point2.getY() - point.getY(), point2.getX() - point.getX()));
-
-        if (angle < 0) {
-            angle += 360;
-        }
-
-        return angle;
+        double angle = Math.toDegrees(Math.atan2(point2.getY() - point.getY(), point2.getX() - point.getX())) - Math.toDegrees(Math.atan2(point1.getY() - point.getY(), point1.getX() - point.getX()));
+        return angle < 0 ? angle + 360 : angle;
     }
 
     public double degreeBetweenPoints(Point point) {

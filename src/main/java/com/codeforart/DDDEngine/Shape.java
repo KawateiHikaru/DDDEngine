@@ -18,29 +18,29 @@ public class Shape {
         return points;
     }
 
+    private List<Edge> getEdges() {
+        return IntStream.range(0, points.size())
+                .mapToObj(i -> new Edge(points.get(i), points.get((i + 1) % points.size())))
+                .collect(Collectors.toList());
+    }
+
     /**
      * Return true if the point p is within the shape
      *
      * @param p
      */
-    public boolean isWithin(Point p) {
+    public boolean contains(Point p) {
 
-        IntStream.range(0, points.size())
-                .mapToObj(i -> new Edge(points.get(i), points.get((i + 1) % points.size())))
-                .collect(Collectors.toList())
-                .stream()
-                .forEach(e->{
-                    System.out.println(p);
-                });
+        double sum = getEdges().stream()
+                .mapToDouble(e -> e.angleBetweenPoints(p))
+                .sum();
+        System.out.println(sum);
 
-
-
-        return false;
+        return sum == 360;
     }
 
     public static class Builder {
-        public static class NotEnoughPointsException extends RuntimeException {
-
+        static class NotEnoughPointsException extends RuntimeException {
         }
 
         List<Point> points = new LinkedList<>();
@@ -56,7 +56,6 @@ public class Shape {
             }
 
             Shape shape = new Shape(this.points);
-
             this.points = new LinkedList<>();
 
             return shape;
