@@ -1,11 +1,14 @@
 package com.codeforart.DDDEngine;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Shape {
 
-    final List<Point> points = new LinkedList<>();
+    final List<Point> points = new ArrayList<>();
 
     private Shape(List<Point> points) {
         this.points.addAll(points);
@@ -21,6 +24,16 @@ public class Shape {
      * @param p
      */
     public boolean isWithin(Point p) {
+
+        IntStream.range(0, points.size())
+                .mapToObj(i -> new Edge(points.get(i), points.get((i + 1) % points.size())))
+                .collect(Collectors.toList())
+                .stream()
+                .forEach(e->{
+                    System.out.println(p);
+                });
+
+
 
         return false;
     }
