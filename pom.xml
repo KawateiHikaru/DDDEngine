@@ -4,33 +4,19 @@
     <groupId>com.codeforart</groupId>
     <artifactId>lwgl</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>sar</packaging>
+    <packaging>jar</packaging>
     <build>
         <plugins>
             <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.5</source>
-                    <target>1.5</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>net.sf.maven-sar</groupId>
-                <artifactId>maven-sar-plugin</artifactId>
-                <version>0.9</version>
-                <extensions>true</extensions>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
             </plugin>
         </plugins>
-
-
     </build>
 
     <properties>
@@ -38,7 +24,7 @@
     </properties>
 
     <dependencies>
-       <dependency>
+        <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <!-- use 2.8.0 for Java 7 projects -->
@@ -56,13 +42,12 @@
             <artifactId>guava</artifactId>
             <version>23.6-jre</version>
         </dependency>
-<!-- https://mvnrepository.com/artifact/org.jetbrains/annotations -->
-<dependency>
-    <groupId>org.jetbrains</groupId>
-    <artifactId>annotations</artifactId>
-    <version>13.0</version>
-</dependency>
-
+        <!-- https://mvnrepository.com/artifact/org.jetbrains/annotations -->
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>13.0</version>
+        </dependency>
 
     </dependencies>
 </project>
