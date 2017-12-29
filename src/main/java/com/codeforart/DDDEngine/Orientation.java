@@ -1,11 +1,5 @@
 package com.codeforart.DDDEngine;
 
-enum ORIENTATION {
-    COUNTERCLOCKWISE,
-    CLOCKWISE,
-    COLINEAR
-}
-
 
 public class Orientation {
 

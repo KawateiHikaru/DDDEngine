@@ -3,28 +3,20 @@ package com.codeforart.DDDEngine;
 
 public class Segment {
 
-    public final Point point1, point2;
+    public final Point p, q;
 
-    Segment(Point point1, Point point2) {
-        this.point1 = point1;
-        this.point2 = point2;
+    Segment(Point p, Point q) {
+        this.p = p;
+        this.q = q;
     }
 
-    @Override
-    public String toString() {
-        return "Segment{" +
-                "point1=" + point1 +
-                ", point2=" + point2 +
-                '}';
+    public Point getP() {
+        return p;
     }
 
-    public double angleBetweenPoints(Point point) {
-        double angle = Math.toDegrees(Math.atan2(point2.getY() - point.getY(), point2.getX() - point.getX())) - Math.toDegrees(Math.atan2(point1.getY() - point.getY(), point1.getX() - point.getX()));
-        return angle < 0 ? angle + 360 : angle;
+    public Point getQ() {
+        return q;
     }
 
-    public double degreeBetweenPoints(Point point) {
-        return Math.toRadians(angleBetweenPoints(point));
-    }
 
 }

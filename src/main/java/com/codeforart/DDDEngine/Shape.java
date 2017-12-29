@@ -31,13 +31,14 @@ public class Shape {
      */
     public boolean contains(Point p) {
 
-        double sum = getEdges().stream()
-                .mapToDouble(e -> e.angleBetweenPoints(p))
-                .sum();
+//        double sum = getEdges().stream()
+//                .mapToDouble(e -> e.angleBetweenPoints(p))
+//                .sum();
+//
+//        System.out.println(sum);
 
-        System.out.println(sum);
-
-        return sum == 360;
+//        return sum == 360;
+        return false;
     }
 
     public static class Builder {
