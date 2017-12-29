@@ -29,12 +29,12 @@ public class Point {
     /**
      * Added two points together and returns a new point
      *
-     * @param p1
+     * @param p
      * @return
      */
-    public Point add(@NotNull Point p1) {
-        checkNotNull(p1);
-        return new Point(this.x + p1.x, this.y + p1.y);
+    public Point add(@NotNull Point p) {
+        checkNotNull(p);
+        return new Point(this.x + p.x, this.y + p.y);
     }
 
     public Point negate() {
@@ -52,26 +52,26 @@ public class Point {
     /**
      * Added two points together and returns a new point
      *
-     * @param p1
+     * @param p
      * @return
      */
-    public Point sub(@NotNull Point p1) {
-        checkNotNull(p1);
-        return this.add(p1.negate());
+    public Point sub(@NotNull Point p) {
+        checkNotNull(p);
+        return this.add(p.negate());
     }
 
     /**
      * Should return the distance between this point and point p1
      *
-     * @param p1
+     * @param p
      * @return
      */
-    public float distance(@NotNull Point p1) {
-        checkNotNull(p1);
+    public float distance(@NotNull Point p) {
+        checkNotNull(p);
 
         return (float) Math.sqrt(
-                Math.pow(p1.x - this.x, 2) +
-                        Math.pow(p1.y - this.y, 2)
+                Math.pow(p.x - this.x, 2) +
+                        Math.pow(p.y - this.y, 2)
         );
     }
 
@@ -85,9 +85,9 @@ public class Point {
         checkNotNull(obj);
         if (!(obj instanceof Point)) return false;
 
-        Point p1 = (Point) obj;
-        return p1.getX() == this.getX() &&
-                p1.getY() == this.getY();
+        Point p = (Point) obj;
+        return p.getX() == this.getX() &&
+                p.getY() == this.getY();
 
     }
 
