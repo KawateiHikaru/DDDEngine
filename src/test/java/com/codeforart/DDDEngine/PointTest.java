@@ -6,6 +6,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class PointTest {
 
+
+    @Test
+    public void shouldHaveSameHashcodes() {
+        Point p = new Point(0,0);
+        Point q = new Point(0,0);
+
+        assertThat(p.hashCode()).isEqualTo(q.hashCode());
+    }
+
     @Test
     public void shouldCompareTwoPoints() {
         Point p1 = new Point(0, 0);

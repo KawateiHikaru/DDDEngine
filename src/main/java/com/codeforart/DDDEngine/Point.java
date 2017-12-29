@@ -76,6 +76,11 @@ public class Point {
     }
 
     @Override
+    public int hashCode() {
+        return (this.x + ":" + this.y).hashCode();
+    }
+
+    @Override
     public boolean equals(Object obj) {
         checkNotNull(obj);
         if (!(obj instanceof Point)) return false;
