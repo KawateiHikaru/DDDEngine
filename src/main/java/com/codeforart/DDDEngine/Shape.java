@@ -1,9 +1,10 @@
 package com.codeforart.DDDEngine;
 
+import com.google.common.collect.ImmutableList;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Shape {
@@ -18,10 +19,10 @@ public class Shape {
         return points;
     }
 
-    private List<Segment> getEdges() {
+    public List<Segment> getEdges() {
         return IntStream.range(0, points.size())
                 .mapToObj(i -> new Segment(points.get(i), points.get((i + 1) % points.size())))
-                .collect(Collectors.toList());
+                .collect(ImmutableList.toImmutableList());
     }
 
     /**
@@ -30,15 +31,11 @@ public class Shape {
      * @param p
      */
     public boolean contains(Point p) {
-
-//        double sum = getEdges().stream()
-//                .mapToDouble(e -> e.angleBetweenPoints(p))
-//                .sum();
-//
-//        System.out.println(sum);
-
-//        return sum == 360;
-        return false;
+        long count = getEdges()
+                .stream()
+                .filter(e -> e.intersects(new Segment(p, new Point(Float.MAX_VALUE, p.getY()))))
+                .count();
+        return count % 2 == 1;
     }
 
     public static class Builder {

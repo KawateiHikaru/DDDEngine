@@ -13,7 +13,9 @@ public class ShapeTest {
     @Before
     public void buildShape() {
         shape = new Shape.Builder().add(new Point(10, 10))
+                .add(new Point(0, 5))
                 .add(new Point(-10, 10))
+                .add(new Point(-20, 0))
                 .add(new Point(-10, -10))
                 .add(new Point(10, 10))
                 .build();
@@ -39,7 +41,12 @@ public class ShapeTest {
 
     @Test
     public void shouldReturnPoints() {
-        assertThat(shape.getPoints().size()).isEqualTo(4);
+        assertThat(shape.getPoints().size()).isEqualTo(6);
+    }
+
+    @Test
+    public void shouldReturnSegments() {
+        assertThat(shape.getEdges().size()).isEqualTo(shape.getPoints().size());
     }
 
 

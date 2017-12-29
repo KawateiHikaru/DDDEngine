@@ -1,6 +1,9 @@
 package com.codeforart.DDDEngine;
 
 
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+
 public class Orientation {
 
     private Orientation() {
@@ -14,5 +17,11 @@ public class Orientation {
         if (val == 0) return ORIENTATION.COLINEAR;
 
         return (val < 0) ? ORIENTATION.CLOCKWISE : ORIENTATION.COUNTERCLOCKWISE;
+    }
+
+    public static boolean onSegment(Point p, Point q, Point r) {
+        return q.getX() <= max(p.getX(), r.getX()) && q.getX() >= min(p.getX(), r.getX()) &&
+                q.getY() <= max(p.getY(), r.getY()) && q.getY() >= min(p.getY(), r.getY());
+
     }
 }
