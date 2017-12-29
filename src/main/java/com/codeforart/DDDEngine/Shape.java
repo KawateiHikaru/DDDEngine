@@ -33,7 +33,7 @@ public class Shape {
     public boolean contains(Point p) {
         long count = getEdges()
                 .stream()
-                .filter(e -> e.intersects(new Segment(p, new Point(Float.MAX_VALUE, p.getY()))))
+                .filter(e -> e.intersects(new Segment(p, new Point(Float.POSITIVE_INFINITY, p.getY()))))
                 .count();
         return count % 2 == 1;
     }
