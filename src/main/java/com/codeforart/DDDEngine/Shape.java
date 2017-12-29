@@ -18,9 +18,9 @@ public class Shape {
         return points;
     }
 
-    private List<Edge> getEdges() {
+    private List<Segment> getEdges() {
         return IntStream.range(0, points.size())
-                .mapToObj(i -> new Edge(points.get(i), points.get((i + 1) % points.size())))
+                .mapToObj(i -> new Segment(points.get(i), points.get((i + 1) % points.size())))
                 .collect(Collectors.toList());
     }
 
@@ -34,6 +34,7 @@ public class Shape {
         double sum = getEdges().stream()
                 .mapToDouble(e -> e.angleBetweenPoints(p))
                 .sum();
+
         System.out.println(sum);
 
         return sum == 360;

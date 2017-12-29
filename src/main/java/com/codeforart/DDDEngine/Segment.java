@@ -1,16 +1,18 @@
 package com.codeforart.DDDEngine;
 
-public class Edge {
+
+public class Segment {
+
     public final Point point1, point2;
 
-    Edge(Point point1, Point point2) {
+    Segment(Point point1, Point point2) {
         this.point1 = point1;
         this.point2 = point2;
     }
 
     @Override
     public String toString() {
-        return "Edge{" +
+        return "Segment{" +
                 "point1=" + point1 +
                 ", point2=" + point2 +
                 '}';
@@ -24,4 +26,5 @@ public class Edge {
     public double degreeBetweenPoints(Point point) {
         return Math.toRadians(angleBetweenPoints(point));
     }
+
 }
