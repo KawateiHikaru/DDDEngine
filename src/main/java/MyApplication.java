@@ -15,12 +15,7 @@ public class MyApplication extends Application {
     Shape shape;
 
     public MyApplication() {
-        shape = new Shape.Builder().add(new Point(0, 0))
-                .add(new Point(100, 0))
-                .add(new Point(50, 50))
-                .add(new Point(100, 100))
-                .add(new Point(0, 100))
-                .build();
+        shape = new Shape.Builder().defaultTestShape();
     }
 
     public static void main(String[] args) {
@@ -85,6 +80,7 @@ public class MyApplication extends Application {
         });
 
         monitored.setOnMouseClicked(event -> {
+            System.out.println(event);
             shape.contains(new Point(event.getX(), event.getY()));
         });
 

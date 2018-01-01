@@ -12,15 +12,9 @@ public class ShapeTest {
 
     @Before
     public void buildShape() {
-        shape = new Shape.Builder().add(new Point(-10, -10))
-                .add(new Point(100, -10))
-                .add(new Point(50, 50))
-                .add(new Point(100, 100))
-                .add(new Point(-10, 100))
-                .add(new Point(-10, -10))
-                .build();
+        shape = new Shape.Builder().defaultTestShape();
     }
-    
+
     @Test
     public void shouldThrowErrorWhenNotEnoughPoints() {
         Point pointA = new Point(1000, 200);
@@ -35,7 +29,7 @@ public class ShapeTest {
 
     @Test
     public void shouldReturnPoints() {
-        assertThat(shape.getPoints().size()).isEqualTo(6);
+        assertThat(shape.getPoints().size()).isEqualTo(5);
     }
 
     @Test
@@ -49,7 +43,8 @@ public class ShapeTest {
 
         assertThat(shape.contains(new Point(0, 0))).isTrue();
         assertThat(shape.contains(new Point(10, 10))).isTrue();
-        assertThat(shape.contains(new Point(49, 0))).isTrue();
+        assertThat(shape.contains(new Point(49, 10))).isTrue();
+        assertThat(shape.contains(new Point(49, 50))).isTrue();
         assertThat(shape.contains(new Point(1000, 1000))).isFalse();
     }
 

@@ -42,6 +42,15 @@ public class Shape {
     }
 
     public static class Builder {
+        public Shape defaultTestShape() {
+            return add(new Point(0, 0))
+                    .add(new Point(100, 0))
+                    .add(new Point(50, 50))
+                    .add(new Point(100, 100))
+                    .add(new Point(0, 100))
+                    .build();
+        }
+
         static class NotEnoughPointsException extends RuntimeException {
         }
 
