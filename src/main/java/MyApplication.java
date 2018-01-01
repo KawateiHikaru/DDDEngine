@@ -74,7 +74,7 @@ public class MyApplication extends Application {
 
         monitored.setOnMouseMoved(event -> {
 
-            Point p = new Point((long) event.getX(), (long) event.getY());
+            Point p = new Point(event.getX(), event.getY());
             String msg =
                     "(x: " + p.x + ", y: " + p.y + ") \n" +
                             "(sceneX: " + event.getSceneX() + ", sceneY: " + event.getSceneY() + ") \n" +
@@ -82,6 +82,10 @@ public class MyApplication extends Application {
                             shape.contains(p);
 
             reporter.setText(msg);
+        });
+
+        monitored.setOnMouseClicked(event -> {
+            shape.contains(new Point(event.getX(), event.getY()));
         });
 
 //        monitored.setOnMouseExited(new EventHandler<MouseEvent>() {

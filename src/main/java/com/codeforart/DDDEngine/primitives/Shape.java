@@ -1,4 +1,4 @@
-package com.codeforart.DDDEngine;
+package com.codeforart.DDDEngine.primitives;
 
 import com.google.common.collect.ImmutableList;
 
@@ -31,10 +31,13 @@ public class Shape {
      * @param p
      */
     public boolean contains(Point p) {
+        Point q = new Point(Long.MAX_VALUE, p.y);
+
         long count = getEdges()
                 .stream()
-                .filter(e -> e.intersects(new Segment(p, new Point(Float.POSITIVE_INFINITY, p.getY()))))
+                .filter(e -> e.intersects(new Segment(p, q)))
                 .count();
+
         return count % 2 == 1;
     }
 

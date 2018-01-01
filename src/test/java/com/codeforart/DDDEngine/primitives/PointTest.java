@@ -1,4 +1,4 @@
-package com.codeforart.DDDEngine;
+package com.codeforart.DDDEngine.primitives;
 
 import org.junit.Test;
 
@@ -9,8 +9,8 @@ public class PointTest {
 
     @Test
     public void shouldHaveSameHashcodes() {
-        Point p = new Point(0,0);
-        Point q = new Point(0,0);
+        Point p = new Point(0, 0);
+        Point q = new Point(0, 0);
 
         assertThat(p.hashCode()).isEqualTo(q.hashCode());
     }
@@ -43,8 +43,12 @@ public class PointTest {
 
     @Test
     public void shouldNegate() {
-        Point p1 = new Point(1, 1);
-        assertThat(p1.negate()).isEqualTo(new Point(-1, -1));
+        Point p = new Point(1, 1);
+        assertThat(p.negate()).isEqualTo(new Point(-1, -1));
+
+        // 2s complement
+        Point q = new Point(Long.MAX_VALUE, Long.MAX_VALUE);
+        assertThat(q.negate()).isEqualTo(new Point(Long.MIN_VALUE, Long.MIN_VALUE));
     }
 
     @Test
@@ -59,6 +63,13 @@ public class PointTest {
         Point p2 = new Point(10, 0);
 
         assertThat(p1.distance(p2)).isEqualTo(10);
+    }
+
+    @Test
+    public void shouldConfinePointsWithinMaxAndMin() {
+        Point p1 = new Point(Point.MAX_VALUE + 1, Point.MIN_VALUE - 1);
+        assertThat(p1.x).isEqualTo(Point.MAX_VALUE);
+        assertThat(p1.y).isEqualTo(Point.MIN_VALUE);
     }
 
 }
